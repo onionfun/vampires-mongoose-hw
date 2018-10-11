@@ -1,7 +1,9 @@
 // 1. Require your node modules
-
+require('./db');
+const mongoose = require('mongoose');
+const connectionString = 'mongodb://localhost/test'
 // 2. Require your model (and possibly your extra data source);
-
+const Vamps = require('./populateVampires');
 // 3. Connect your database and collection name
 
 // 4. Open your mongoose connection
