@@ -247,7 +247,16 @@ const Vampire = require('./models/vampire')
 //         }
 // })
 
-Vampire.find({loves:"brooding"}, (err, foundVampire)=>{
+// Vampire.find({loves:"brooding"}, (err, foundVampire)=>{
+//         if(err){
+//                 console.log(err);
+//             } else {
+    
+//                 console.log(foundVampire);
+//             }
+//     })
+
+    Vampire.find({$and: [{loves:"fancy cloaks"}, {loves:{$nin:['top hats', 'virgin blood']}}]}, (err, foundVampire)=>{
         if(err){
                 console.log(err);
             } else {
