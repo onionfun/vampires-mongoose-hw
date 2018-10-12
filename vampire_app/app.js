@@ -7,84 +7,85 @@ require('./vampire_app')
 // const connectionString = ('mongodb://localhost/test')
 const Vampire = require('./models/vampire')
 // 2. Require your model (and possibly your extra data source);
-Vampire.collection.insertMany(Vamps,() => {
-    console.log(Vamps)
-    mongoose.connection.close();
-  });
-Vampire.create({
-    name: "Penelope",
-    hair_color: "black",
-    eye_color: "brown",
-    dob: new Date(543, 2, 13, 7, 47),
-    loves: ["reading", "history"],
-    location: "London, England",
-    gender: "f",
-    victims: 1000,
-  }, (err, createdVamps)=>{
-    if(err){
-        console.log(err);
-    } else {
-        console.log(createdVamps);
-    }
-}),
+// Vampire.collection.insertMany(Vamps,() => {
+//     console.log(Vamps)
+//     mongoose.connection.close();
+//   });
 
-  Vampire.create(
-  {
-    name: "Viago",
-    hair_color: "brown",
-    eye_color: "brown",
-    dob: new Date(1748, 2, 13, 7, 47),
-    loves: ["reading", "theater"],
-    location: "Wellington, New Zealand",
-    gender: "f",
-    victims: 156,
-  }, 
-  (err, createdVamps)=>{
-    if(err){
-        console.log(err);
-    } else {
-        console.log(createdVamps);
-    }
-}),
+// Vampire.create({
+//     name: "Penelope",
+//     hair_color: "black",
+//     eye_color: "brown",
+//     dob: new Date(543, 2, 13, 7, 47),
+//     loves: ["reading", "history"],
+//     location: "London, England",
+//     gender: "f",
+//     victims: 1000,
+//   }, (err, createdVamps)=>{
+//     if(err){
+//         console.log(err);
+//     } else {
+//         console.log(createdVamps);
+//     }
+// }),
 
-  Vampire.create(
-  {
-    name: "Deacon",
-    hair_color: "brown",
-    eye_color: "brown",
-    dob: new Date(1876, 2, 13, 7, 47),
-    loves: ["partying", "fighting"],
-    location: "Wellington, New Zealand",
-    gender: "m",
-    victims: 1700,
-  }, 
-  (err, createdVamps)=>{
-    if(err){
-        console.log(err);
-    } else {
-        console.log(createdVamps);
-    }
-}),
+//   Vampire.create(
+//   {
+//     name: "Viago",
+//     hair_color: "brown",
+//     eye_color: "brown",
+//     dob: new Date(1748, 2, 13, 7, 47),
+//     loves: ["reading", "theater"],
+//     location: "Wellington, New Zealand",
+//     gender: "f",
+//     victims: 156,
+//   }, 
+//   (err, createdVamps)=>{
+//     if(err){
+//         console.log(err);
+//     } else {
+//         console.log(createdVamps);
+//     }
+// }),
 
-  Vampire.create(
-  {
-    name: "Piotr",
-    hair_color: "bald",
-    eye_color: "yellow",
-    dob: new Date(5, 2, 13, 7, 47),
-    loves: ["blood", "chickens"],
-    location: "Wellington, New Zealand",
-    gender: "m",
-    victims: 18000,
-  }, 
+//   Vampire.create(
+//   {
+//     name: "Deacon",
+//     hair_color: "brown",
+//     eye_color: "brown",
+//     dob: new Date(1876, 2, 13, 7, 47),
+//     loves: ["partying", "fighting"],
+//     location: "Wellington, New Zealand",
+//     gender: "m",
+//     victims: 1700,
+//   }, 
+//   (err, createdVamps)=>{
+//     if(err){
+//         console.log(err);
+//     } else {
+//         console.log(createdVamps);
+//     }
+// }),
+
+//   Vampire.create(
+//   {
+//     name: "Piotr",
+//     hair_color: "bald",
+//     eye_color: "yellow",
+//     dob: new Date(5, 2, 13, 7, 47),
+//     loves: ["blood", "chickens"],
+//     location: "Wellington, New Zealand",
+//     gender: "m",
+//     victims: 18000,
+//   }, 
   
-  (err, createdVamps)=>{
-        if(err){
-            console.log(err);
-        } else {
-            console.log(createdVamps);
-        }
-    });
+//   (err, createdVamps)=>{
+//         if(err){
+//             console.log(err);
+//         } else {
+//             console.log(createdVamps);
+//         }
+//     });
 
 // 3. Connect your database and collection name
 
@@ -105,15 +106,53 @@ Vampire.create({
 // ## QUERYING
 /////////////////////////////////////////////////
 // ### Select by comparison
-// Vamps.find({})
-// Article.find({author: "Hemingway"}, (err, foundArticles)=>{
+
+
+// Vampire.find({gender: "f"}, (err, foundVampire)=>{
 //         if(err){
 //                 console.log(err);
 //             } else {
 //                 //this returns any match the author has an array
-//                 console.log(foundArticles);
+//                 console.log(foundVampire);
 //             }
 //     })
+
+
+// Vampire.find({victims: {$gt:500} }, (err, foundVampire)=>{
+//     if(err){
+//             console.log(err);
+//         } else {
+//             //this returns any match the author has an array
+//             console.log(foundVampire);
+//         }
+// })
+
+// Vampire.find({victims: {$lte:150} }, (err, foundVampire)=>{
+//     if(err){
+//             console.log(err);
+//         } else {
+//             //this returns any match the author has an array
+//             console.log(foundVampire);
+//         }
+// })
+
+// Vampire.find({victims: {$ne:210234} }, (err, foundVampire)=>{
+//         if(err){
+//                 console.log(err);
+//             } else {
+//                 //this returns any match the author has an array
+//                 console.log(foundVampire);
+//             }
+//     })
+
+// Vampire.find({victims: {$gt:150} && {$lt:500}  }, (err, foundVampire)=>{
+//             if(err){
+//                     console.log(err);
+//                 } else {
+//                     //this returns any match the author has an array
+//                     console.log(foundVampire);
+//                 }
+//         })
 
 
 
