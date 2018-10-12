@@ -220,6 +220,41 @@ const Vampire = require('./models/vampire')
 //         }
 // })
 
+// Vampire.find({$or:[{loves:"frilly shirtsleeves"}, {loves:"frilly collars"}]}, (err, foundVampire)=>{
+//         if(err){
+//                 console.log(err);
+//             } else {
+    
+//                 console.log(foundVampire);
+//             }
+//     })
+
+// Vampire.find({$or:[{loves:"frilly shirtsleeves"}, {loves:"frilly collars"}]}, (err, foundVampire)=>{
+//     if(err){
+//             console.log(err);
+//         } else {
+
+//             console.log(foundVampire);
+//         }
+// })
+
+// Vampire.find({loves:"brooding"}, (err, foundVampire)=>{
+//     if(err){
+//             console.log(err);
+//         } else {
+
+//             console.log(foundVampire);
+//         }
+// })
+
+Vampire.find({loves:"brooding"}, (err, foundVampire)=>{
+        if(err){
+                console.log(err);
+            } else {
+    
+                console.log(foundVampire);
+            }
+    })
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
