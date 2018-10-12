@@ -140,7 +140,6 @@ const Vampire = require('./models/vampire')
 //         if(err){
 //                 console.log(err);
 //             } else {
-//                 //this returns any match the author has an array
 //                 console.log(foundVampire);
 //             }
 //     })
@@ -148,13 +147,42 @@ const Vampire = require('./models/vampire')
 // Vampire.find({victims: {$gt:150} && {$lt:500}  }, (err, foundVampire)=>{
 //             if(err){
 //                     console.log(err);
-//                 } else {
-//                     //this returns any match the author has an array
 //                     console.log(foundVampire);
 //                 }
 //         })
 
+// Vampire.find({title:{$exists:true}}, (err, foundVampire)=>{
+//                 if(err){
+//                         console.log(err);
+//                     } else {
+//                         console.log(foundVampire);
+//                     }
+//             })
 
+// Vampire.find({victims:{$exists:false}}, (err, foundVampire)=>{
+//                     if(err){
+//                             console.log(err);
+//                         } else {
+//                             console.log(foundVampire);
+//                         }
+//                 })
+
+// Vampire.find({$and:[{title:{$exists:true}}, {victims:{$exists:false}}]}, (err, foundVampire)=>{
+//                     if(err){
+//                             console.log(err);
+//                         } else {
+//                             console.log(foundVampire);
+//                         }
+//                 })
+
+Vampire.find({$and:[{victims:{$gt:1000}}, {victims:{$exists:true}}]}, (err, foundVampire)=>{
+                        if(err){
+                                console.log(err);
+                            } else {
+
+                                console.log(foundVampire);
+                            }
+                    })
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
