@@ -1,12 +1,17 @@
 // 1. Require your node modules
-const Vamps = require('./populateVampires');
 const mongoose = require('mongoose');
-const Vamp = require('../test/model-tests')
-const connectionString = ('mongodb://localhost/test')
-const vampire = require('./models/vampire')
-// 2. Require your model (and possibly your extra data source);
+const Vamps = require('./populateVampires');
+require('./vampire_app')
 
-Vamps.create({
+// const Vamp = require('../test/model-tests')
+// const connectionString = ('mongodb://localhost/test')
+const Vampire = require('./models/vampire')
+// 2. Require your model (and possibly your extra data source);
+Vampire.collection.insertMany(Vamps,() => {
+    console.log(Vamps)
+    mongoose.connection.close();
+  });
+Vampire.create({
     name: "Penelope",
     hair_color: "black",
     eye_color: "brown",
@@ -15,7 +20,15 @@ Vamps.create({
     location: "London, England",
     gender: "f",
     victims: 1000,
-  }, 
+  }, (err, createdVamps)=>{
+    if(err){
+        console.log(err);
+    } else {
+        console.log(createdVamps);
+    }
+}),
+
+  Vampire.create(
   {
     name: "Viago",
     hair_color: "brown",
@@ -23,9 +36,18 @@ Vamps.create({
     dob: new Date(1748, 2, 13, 7, 47),
     loves: ["reading", "theater"],
     location: "Wellington, New Zealand",
-    gender: "m",
+    gender: "f",
     victims: 156,
   }, 
+  (err, createdVamps)=>{
+    if(err){
+        console.log(err);
+    } else {
+        console.log(createdVamps);
+    }
+}),
+
+  Vampire.create(
   {
     name: "Deacon",
     hair_color: "brown",
@@ -36,6 +58,15 @@ Vamps.create({
     gender: "m",
     victims: 1700,
   }, 
+  (err, createdVamps)=>{
+    if(err){
+        console.log(err);
+    } else {
+        console.log(createdVamps);
+    }
+}),
+
+  Vampire.create(
   {
     name: "Piotr",
     hair_color: "bald",
@@ -54,6 +85,7 @@ Vamps.create({
             console.log(createdVamps);
         }
     });
+
 // 3. Connect your database and collection name
 
 // 4. Open your mongoose connection
@@ -73,6 +105,17 @@ Vamps.create({
 // ## QUERYING
 /////////////////////////////////////////////////
 // ### Select by comparison
+// Vamps.find({})
+// Article.find({author: "Hemingway"}, (err, foundArticles)=>{
+//         if(err){
+//                 console.log(err);
+//             } else {
+//                 //this returns any match the author has an array
+//                 console.log(foundArticles);
+//             }
+//     })
+
+
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist

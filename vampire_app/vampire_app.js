@@ -1,6 +1,6 @@
-require('./populateVampires');
+
 const mongoose = require('mongoose');
-const connectionString = ('mongodb://localhost/test')
+const connectionString = 'mongodb://localhost/test'
 
 mongoose.connect(connectionString); //connecting this file with mongo db
 mongoose.connection.on('connected', ()=>{
