@@ -175,14 +175,51 @@ const Vampire = require('./models/vampire')
 //                         }
 //                 })
 
-Vampire.find({$and:[{victims:{$gt:1000}}, {victims:{$exists:true}}]}, (err, foundVampire)=>{
-                        if(err){
-                                console.log(err);
-                            } else {
+// Vampire.find({$and:[{victims:{$gt:1000}}, {victims:{$exists:true}}]}, (err, foundVampire)=>{
+//                         if(err){
+//                                 console.log(err);
+//                             } else {
 
-                                console.log(foundVampire);
-                            }
-                    })
+//                                 console.log(foundVampire);
+//                             }
+//                     })
+
+// Vampire.find({$or:[{location:"New York, New York, US"}, {location:"New Orleans, Louisiana, US"}]}, (err, foundVampire)=>{
+//                         if(err){
+//                                 console.log(err);
+//                             } else {
+
+//                                 console.log(foundVampire);
+//                             }
+//                     })
+
+// Vampire.find({$or:[{loves:"brooding"}, {loves:"being tragic"}]}, (err, foundVampire)=>{
+//                             if(err){
+//                                     console.log(err);
+//                                 } else {
+    
+//                                     console.log(foundVampire);
+//                                 }
+//                         })
+
+// Vampire.find({$or:[{victims:{$gt:1000}}, {loves:"marshmallow"}]}, (err, foundVampire)=>{
+//                             if(err){
+//                                     console.log(err);
+//                                 } else {
+    
+//                                     console.log(foundVampire);
+//                                 }
+//                         })
+
+// Vampire.find({$or:[{hair_color:"red"}, {eye_color:"green"}]}, (err, foundVampire)=>{
+//     if(err){
+//             console.log(err);
+//         } else {
+
+//             console.log(foundVampire);
+//         }
+// })
+
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
