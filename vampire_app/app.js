@@ -2,10 +2,10 @@
 const mongoose = require('mongoose');
 const Vamps = require('./populateVampires');
 require('./vampire_app')
-
+const Vampire = require('./models/vampire')
 // const Vamp = require('../test/model-tests')
 // const connectionString = ('mongodb://localhost/test')
-const Vampire = require('./models/vampire')
+
 // 2. Require your model (and possibly your extra data source);
 // Vampire.collection.insertMany(Vamps,() => {
 //     console.log(Vamps)
@@ -247,7 +247,8 @@ const Vampire = require('./models/vampire')
 //         }
 // })
 
-// Vampire.find({loves:"brooding"}, (err, foundVampire)=>{
+
+//  Vampire.find({$or: [{loves:"fancy cloaks"}, {loves:'appearing innocent'}, {loves: 'trickery'}, {loves: 'lurking in rotting mansions'} {loves: 'R&B music'}]}, (err, foundVampire)=>{
 //         if(err){
 //                 console.log(err);
 //             } else {
@@ -256,14 +257,19 @@ const Vampire = require('./models/vampire')
 //             }
 //     })
 
-    Vampire.find({$and: [{loves:"fancy cloaks"}, {loves:{$nin:['top hats', 'virgin blood']}}]}, (err, foundVampire)=>{
-        if(err){
-                console.log(err);
-            } else {
+    // Vampire.find({$and: [{loves:"fancy cloaks"}, {loves:{$nin:['top hats', 'virgin blood']}}]}, (err, foundVampire)=>{
+    //     if(err){
+    //             console.log(err);
+    //         } else {
     
-                console.log(foundVampire);
-            }
-    })
+    //             console.log(foundVampire);
+    //         }
+    // })
+
+
+
+
+
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
